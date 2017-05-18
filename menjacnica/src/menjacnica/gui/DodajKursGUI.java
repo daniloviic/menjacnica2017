@@ -195,11 +195,7 @@ public class DodajKursGUI extends JFrame {
 			valuta.setKupovni(Double.parseDouble(textFieldKupovniKurs.getText()));
 			valuta.setSrednji(Double.parseDouble(textFieldSrednjiKurs.getText()));
 			
-			// Dodavanje valute u kursnu listu
-			glavniProzor.sistem.dodajValutu(valuta);
-
-			// Osvezavanje glavnog prozora
-			glavniProzor.prikaziSveValute();
+			GUIKontroler.unesiKurs(valuta);
 			
 			//Zatvaranje DodajValutuGUI prozora
 			dispose();
