@@ -58,22 +58,21 @@ public class GUIKontroler {
 	}
 	
 	public static void prikaziDodajKursGUI() {
-		dodajKurs = new DodajKursGUI(glavniProzor);
+		dodajKurs = new DodajKursGUI();
 		dodajKurs.setVisible(true);
 		dodajKurs.setLocationRelativeTo(glavniProzor);
 	}
 	
 	public static void prikaziObrisiKursGUI(Valuta valuta) {
 		
-		obrisiKurs = new ObrisiKursGUI(glavniProzor, valuta);
+		obrisiKurs = new ObrisiKursGUI(valuta);
 		obrisiKurs.setVisible(true);
 		obrisiKurs.setLocationRelativeTo(glavniProzor);
 		
 	}
 	
 	public static void prikaziIzvrsiZamenuGUI(Valuta valuta){
-		izvrsiZamenu = new IzvrsiZamenuGUI(glavniProzor,
-				valuta);
+		izvrsiZamenu = new IzvrsiZamenuGUI(valuta);
 		izvrsiZamenu.setLocationRelativeTo(glavniProzor);
 		izvrsiZamenu.setVisible(true);
 	}
@@ -121,10 +120,24 @@ public class GUIKontroler {
 		return menjacnica.vratiKursnuListu();
 	}
 	
-	public static void unesiKurs(Valuta valuta){
-			menjacnica.dodajValutu(valuta);
+	public static void unesiKurs(String naziv, String skraceniNaziv, int sifra, String prodajni, String kupovni, String srednji){
+		try {
 			
+			Valuta valuta = new Valuta();
+
+			// Punjenje podataka o valuti
+			valuta.setNaziv(naziv);
+			valuta.setSkraceniNaziv(skraceniNaziv);
+			valuta.setSifra(sifra);
+			valuta.setProdajni(Double.parseDouble(prodajni));
+			valuta.setKupovni(Double.parseDouble(kupovni));
+			valuta.setSrednji(Double.parseDouble(srednji));
+			
+			menjacnica.dodajValutu(valuta);
 			glavniProzor.prikaziSveValute();
+		} catch (Exception e) {
+			JOptionPane.showMessageDialog(glavniProzor, e.getMessage(), "Greska", JOptionPane.ERROR_MESSAGE);
+		}
 	}
 
 	public static double izvrsiZamenuValute(Valuta valuta, double iznos, boolean selected) {

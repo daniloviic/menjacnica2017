@@ -64,8 +64,7 @@ public class MenjacnicaGUI extends JFrame {
 	private JMenuItem mntmExit;
 	private JMenuItem mntmAbout;
 	
-	//klasa na logickom nivou
-	protected Menjacnica sistem;
+	
 	private JTable table;
 
 	
@@ -92,7 +91,7 @@ public class MenjacnicaGUI extends JFrame {
 		contentPane.add(getScrollPane(), BorderLayout.CENTER);
 		contentPane.add(getPanel(), BorderLayout.EAST);
 		
-		sistem = new Menjacnica();
+		
 	}
 
 	private JScrollPane getScrollPane() {
